@@ -40,34 +40,5 @@ cf requiement.txt
 4. Les données sont consolidées dans une liste
 5. La liste complète est sauvegardée dans un fichier JSON
 
-## Personnalisation
-
-- Vous pouvez modifier le chemin de sauvegarde du fichier JSON
-- Ajustez la plage de pages à scraper (`range(2,100)`)
-
-## Avertissements
-
-- Respectez les conditions d'utilisation du site web
-- Ce script est à des fins éducatives
-- Utilisez le scraping de manière éthique
-
-## Exemple d'Utilisation
-
-```python
-# Le script s'exécute directement
-python nom_du_script.py
-```
-
-## Dépannage
-
-- Assurez-vous d'avoir une connexion internet stable
-- Vérifiez que les bibliothèques requises sont installées
-- En cas d'erreurs, consultez les messages d'erreur pour plus de détails
-
-## Licence
-
-[À spécifier - par exemple MIT, GPL, etc.]
-
-## Contribution
 
 Les pull requests sont les bienvenues. Pour des changements majeurs, ouvrez d'abord un ticket pour discuter des modifications proposées.
