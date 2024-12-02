@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import json
+import os
 import html5lib
 
 page = requests.get("https://quotes.toscrape.com/")
@@ -40,9 +41,12 @@ for i in range(2,100): #j'invente une liste imaginaire qui est va de 2 a 100
         data = data + current_page_quotes #liste de data de la première page puis avec uune nouvel page de data avec des maj plus complete qui l'écrase
     else:
         break
-    
-with open('/home/turpin/Documents/Python/logique python/scraper_exctract_infos.json','w') as f: # extraction des donnée sous formas JSON
-    json.dump(data, f)  
+file_path = 'C:/Users/projet-scraper-python/data/scraper_exctract_infos.json' # Chemain
+os.makedirs(os.path.dirname(file_path), exist_ok=True)  # Faire le dossier
+
+with open(file_path, 'w') as f: # extraction des donnée sous formas JSON
+    json.dump(data, f)
+    print("Download succesfully")
                                                                                                 # f c'est la valeur de "with open('/home/turpin/Documents/Python/logique python/scraper_exctract_infos.json','w'"
                                                                                                     
 #infos complémentaire :
