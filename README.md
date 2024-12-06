@@ -3,7 +3,7 @@
 
 ## Description du Projet
 
-Ce script Python permet de scraper des citations à partir du site web "Quotes to Scrape" (https://quotes.toscrape.com/). Il récupère les citations, leurs auteurs et leurs tags à travers plusieurs pages du site et les sauvegarde dans un fichier JSON.
+Chttps://quotes.toscrape.com/)e script Python permet de scraper des citations à partir du site web "Quotes to Scrape" (. Il récupère les citations, leurs auteurs et leurs tags à travers plusieurs pages du site et les sauvegarde dans un fichier JSON.
 
 ## Prérequis
 
