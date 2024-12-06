@@ -2,8 +2,15 @@ import requests
 import os
 import json
 
+TotalPg = 0
 
 def extract_data():
+
+    maxPage = request_data(0)
+    for i in range(1,maxPage):
+        request_data(i)
+
+def request_data(page):
     url = 'https://9x8zudunn9-dsn.algolia.net/1/indexes/prod_index_backbox_model_fr-fr/query?x-algolia-agent=Algolia%20for%20JavaScript%20(4.24.0)%3B%20Browser'
 
     headers = {
@@ -28,24 +35,27 @@ def extract_data():
         "clickAnalytics": True,
         "filters": "(cat_id:\"2\") AND (os:\"Android\") AND special_offer_type=0",
         "facets": [
-            "price", "page", "q", "sort", "brand", "serie", "model", "year_date_release", "storage", "color", "network", "real_screen_size",
-            "sim_lock", "double_sim", "real_screen_size", "backbox_grade", "payment_methods", "shipping_delay", "price_ranges.sm-1",
-            "price_ranges.sm-2", "price_ranges.md-1", "price_ranges.md-1b", "price_ranges.md-1c", "price_ranges.md-2", "price_ranges.lg-1",
+            "price", "page", "q", "sort", "brand", "serie", "model", "year_date_release", "storage", "color", "network",
+            "real_screen_size",
+            "sim_lock", "double_sim", "real_screen_size", "backbox_grade", "payment_methods", "shipping_delay",
+            "price_ranges.sm-1",
+            "price_ranges.sm-2", "price_ranges.md-1", "price_ranges.md-1b", "price_ranges.md-1c", "price_ranges.md-2",
+            "price_ranges.lg-1",
             "price_ranges.lg-2", "price_ranges.lg-3"
         ],
         "numericFilters": ["price>=0", "price<=2000"],
-        "page": 0,
+        "page": page,
         "hitsPerPage": 30
     }
 
     response = requests.post(url, headers=headers, json=data)
-    file_path = 'C:/Users/projet-scraper-python/Scrapper/extract_data.json'  # Chemain
-    file_path2 = 'C:/Users/projet-scraper-python/Scrapper/data.json'  # Chemain
+    file_path = f'C:/Users/projet-scraper-python/Scrapper/extract_data_{page+1}.json'  # Chemain
+    file_path2 = f'C:/Users/projet-scraper-python/Scrapper/data_{page+1}.json'  # Chemain
 
     os.makedirs(os.path.dirname(file_path), exist_ok=True)  # Faire le dossier
     datass = response.json()
-    datass["facets"]=""
-    datass["facets_stats"]=""
+    datass["facets"] = ""
+    datass["facets_stats"] = ""
 
     new_list = []
     for data in datass['hits']:
@@ -62,3 +72,4 @@ def extract_data():
         json.dump(datass, f, indent=4)
     with open(file_path2, 'w') as f:  # extraction des donnée sous formas JSON
         json.dump(new_list, f, indent=4)
+    return datass['nbPages']
