@@ -66,6 +66,8 @@ def request_data(page):
         entry['price'] = data['price']
         entry['currency'] = data['currency']
         entry['href'] = data['link_grade_v2']['href']
+        entry['image1'] = data['image1']
+        entry["sub_title_elements"] = data["sub_title_elements"]
         new_list.append(entry)
 
     with open(file_path, 'w') as f:  # extraction des donnée sous formas JSON

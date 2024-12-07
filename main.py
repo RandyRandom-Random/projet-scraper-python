@@ -1,24 +1,20 @@
 import art
 import argparse
 import test
-
 # Joli texte
 text = "Back Market Scrapper"
 ascii_art = art.text2art(text)
-
 # Config des parametre du programme
 parser = argparse.ArgumentParser(
     description="Back Market Scrapper, the information about this program you can read in README.md")
 parser.add_argument("mode", nargs="?", choices=["scrap", "database"], help="Chose yor mode: scrap or database")
-
 args = parser.parse_args()
-
 # Run sans arguments
 if args.mode is None:
     print(ascii_art)
     print("Hello, I have two arguments: 'scrap' and 'database'.")
     print("You can use one of them to run the program.")
-    print("For example: \n\t - python cli_app.py scrap \n\t - python cli_app.py database")
+    print("For example: \n\t - python main.py scrap \n\t - python main.py database")
 else:
     print(ascii_art)
     x = input("Do you want to start? Y or N: ")
