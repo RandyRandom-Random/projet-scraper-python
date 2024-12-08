@@ -1,44 +1,37 @@
-# projet-scraper-python
-# Scraper de Citations Web
+# SCRAPPER-FOR-BACKMARKET
 
-## Description du Projet
 
-Chttps://quotes.toscrape.com/)e script Python permet de scraper des citations à partir du site web "Quotes to Scrape" (. Il récupère les citations, leurs auteurs et leurs tags à travers plusieurs pages du site et les sauvegarde dans un fichier JSON.
 
-## Prérequis
 
-- Python 3.x
-- Bibliothèques Python suivantes :
-  - `requests`
-  - `beautifulsoup4`
-  - `html5lib`
+## Description of Project
+This program can be run in the console (example: main.py), you just need to use two arguments: 'scrap' or 'database'.
+If you choose "scrap" - the program will start scraping all Android smartphones from backmarket.fr.
+If you choose "database" - the program will create a database with data from Backmarket where you can run your SQL queries.
 
-## Installation des Dépendances
+
+## Requirements
+- be Optimus Prime
+- See requirements.txt
+
+## How to install a requirements (for beginners like me)
 
 ```bash
-pip install requests beautifulsoup4 html5lib
+pip install requests os argparse sqlite3 json
 cf requiement.txt
 ```
 
-## Fonctionnalités
+## Functionality
 
-- Extraction des citations de plusieurs pages
-- Récupération des informations suivantes pour chaque citation :
-  - Texte de la citation
-  - Nom de l'auteur
-  - Tags associés
-- Sauvegarde des données dans un fichier JSON
+- Extract all pages of Android smartphones from Backmarket
+- Create a database
+- Use SQL queries in the database
+- Make you smile
 
-## Fonctionnement du Script
-
-1. Le script commence par scraper la page principale du site de citations
-2. Il parcourt ensuite toutes les pages disponibles (de la page 2 à 100)
-3. Pour chaque page, il extrait :
-   - Le texte de la citation
-   - Le nom de l'auteur
-   - Les tags associés
-4. Les données sont consolidées dans une liste
-5. La liste complète est sauvegardée dans un fichier JSON
+## How it works
+1. We start in the main file with an explanation of the program
+2. In test.py, we have the logic for scraping, and this file gives you all pages in JSON format.
+3. In database.py, we have a function that offers a menu, and this function creates a database. On Monday, I need to add the possibility to run SQL queries in the menu function.
 
 
-Les pull requests sont les bienvenues. Pour des changements majeurs, ouvrez d'abord un ticket pour discuter des modifications proposées.
+
+You can modify this program if James opens this repository.
