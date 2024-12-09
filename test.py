@@ -49,8 +49,8 @@ def request_data(page):
     }
 
     response = requests.post(url, headers=headers, json=data)
-    file_path = f'C:/Users/projet-scraper-python/Scrapper/extract_data_{page+1}.json'  # Chemain
-    file_path2 = f'C:/Users/projet-scraper-python/Scrapper/data_{page+1}.json'  # Chemain
+    file_path = f'Scrapper/extract_data_{page+1}.json'  # Chemain
+    file_path2 = f'Scrapper/data_{page+1}.json'  # Chemain
 
     os.makedirs(os.path.dirname(file_path), exist_ok=True)  # Faire le dossier
     datass = response.json()
