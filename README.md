@@ -16,7 +16,7 @@ If you choose "database" - the program will create a database with data from Bac
 ## How to install a requirements (for beginners like me)
 
 ```bash
-pip install requests os argparse sqlite3 json
+pip install -r requirements.txt
 cf requiement.txt
 ```
 
