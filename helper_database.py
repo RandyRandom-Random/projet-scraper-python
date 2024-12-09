@@ -2,21 +2,21 @@ import requests
 import os
 import json
 import sqlite3
-
-
 def database_insert(data):
     conn = sqlite3.connect('Database/smartphones.db')
     cursor = conn.cursor()
-
+    force = "Backmarket"
+    os = "Android"
+    url_vendor = "https://www.backmarket.fr/fr-fr"
     cursor.execute('''
-    INSERT OR IGNORE INTO SMARTPHONES (PK_title_model, brand, sub_title_elements)
-    VALUES (?, ?, ?)
-    ''', (data['title_model'], data['brand'], data['sub_title_elements']))
+    INSERT OR IGNORE INTO SMARTPHONES (PK_title_model, brand, memory , color)
+    VALUES (?, ?, ?, ?)
+    ''', (data['title_model'], data['brand'], data['memory'], data['color']))
 
     cursor.execute('''
     INSERT OR IGNORE INTO VENDOR (PK_Name, url_vendor, currency)
     VALUES (?, ?, ?)
-    ''', (data['brand'], data['href'], data['currency']))
+    ''', (force, url_vendor, data['currency']))
 
     cursor.execute('''
     INSERT INTO PROPOSE (FK_Name, FK_title_model, price, url_anonce, url_image)
@@ -84,9 +84,34 @@ def request_data(page):
         entry['currency'] = data['currency']
         entry['href'] = data['link_grade_v2']['href']
         entry['image1'] = data['image1']
-        entry["sub_title_elements"] ="" # data["sub_title_elements"]
+        entry["memory"] = data["sub_title_elements"][0]
+        entry["color"] = data["sub_title_elements"][1]
         new_list.append(entry)
 
         database_insert(entry)
 
     return datass['nbPages']
+
+
+def queries_SQL():
+    conn = sqlite3.connect('Database/smartphones.db')
+    cursor = conn.cursor()
+    queries = input("Your command SQL: ")
+
+    try:
+        if queries.strip().lower().startswith("select"):
+            cursor.execute(queries)
+            rows = cursor.fetchall()
+            for row in rows:
+                print(row)
+        else:
+            cursor.execute(queries)
+            conn.commit()
+            print("Query executed successfully.")
+
+    except sqlite3.Error as e:
+        print(f"Error executing query: {e}")
+
+    finally:
+        conn.close()
+
