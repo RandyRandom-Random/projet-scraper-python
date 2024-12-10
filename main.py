@@ -24,6 +24,7 @@ else:
             print("I start a Scrapping...")
             # ICI ON DOIT METTRE LE SCRAPEUR QUI RETOURNE LES DONNES EN JSON, ET ON LA MIS ALLELUYA
             test.extract_data()
+            print("Go to see your directory")
         elif args.mode == "database":
 
             print("I create for you a Database...")

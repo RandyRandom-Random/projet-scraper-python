@@ -17,7 +17,7 @@ def database_create():
     CREATE TABLE IF NOT EXISTS PROPOSE (
         FK_Name TEXT,
         FK_title_model TEXT,
-        price REAL,
+        price REAL CHECK(price>0),
         url_anonce TEXT,
         url_image TEXT,
         FOREIGN KEY(FK_title_model) REFERENCES SMARTPHONES(PK_title_model),
